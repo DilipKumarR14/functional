@@ -1,8 +1,9 @@
-<!-- <?php
+<?php
 
 include 'Utility.php';
 
 echo "Enter Input value  \n " ;
-$num=getint();
+$ref=new Utility(); 
+$num=$ref->getint();
 echo $num;
-?> -->
+?>
