@@ -5,6 +5,7 @@ class Utility
     //take integer input
     function getint()
     {
+        //echo "Enter the input: ";
 
         fscanf(STDIN, '%d', $num);
         if (filter_var($num, FILTER_VALIDATE_INT)) {
@@ -12,7 +13,6 @@ class Utility
             return $num;
         } else 
         {
-            echo "enter the int value \n";
             return  $this->getint();
         }
 
