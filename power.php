@@ -1,6 +1,6 @@
 <?php
 include 'Utility.php';
-echo "enter the range: ";
+//echo "enter the range: ";
 $ref=new Utility(); 
 $n=$ref->getint();
 if($n==0)
