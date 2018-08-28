@@ -12,7 +12,7 @@ $won=0;
 $loss=0;
 $i=0;
 $cash=$stake;
-    while ($i<$nooftimes &&$cash > 0 && $cash < $goal) 
+    while ($i<$nooftimes && $cash > 0 && $cash < $goal) 
     {
         $r=rand(1,10);
         if($r<=5)

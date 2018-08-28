@@ -10,5 +10,5 @@ $ref->permute($str, 0, $length - 1);
 
 $t=microtime();
 
-echo "\n elapsed " . $s-$t;
+echo "\n elapsed " . abs($t-$s);
 ?>       
