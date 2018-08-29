@@ -2,32 +2,28 @@
  intcall();
  function intcheck()
  {
-        fscanf(STDIN, '%d', $num);
-        if (filter_var($num, FILTER_VALIDATE_FLOAT))
+        fscanf(STDIN, '%f', $int);
+        if (filter_var($int, FILTER_VALIDATE_INT))
          {
-           echo "enter the integer value : ";
-        } 
-        else if(filter_var($num, FILTER_VALIDATE_INT))
-         {
-             return $num;
-        }
+           return $int;
+         }
+         else{
+             echo "enter the int value : \n";
+             intcall();
+         }
  }
 function intcall()
 {
     echo("enter the row value : ");
     $r=intcheck();
-    if(is_float($r))
-    {
-        echo "enter the int value : ";
-    }
     echo("enter the col value : ");
     $c=intcheck();
     
     $items = array(array());
-    echo "int called\n";
+    echo "enter the value : \n";
     for ($i = 0; $i < $r; $i++) {
         for ($j = 0; $j < $c; $j++) {
-            $items[$i][$j] = readline("enter the element : ");
+            $items[$i][$j] = intcheck();
         }
     }
     print_r($items);

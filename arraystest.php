@@ -1,7 +1,7 @@
 <?php
 include "Utility.php";
 $ref=new Utility();
-echo("1- int 2-double 3-boolean : ");
+echo("1- int 2-double 3-string : ");
 $val=$ref->getint();
 switch ($val) {
     case 1:
@@ -11,7 +11,7 @@ switch ($val) {
     $ref->doublecall();
         break;
     case 3:
-    $ref->boolcall();
+    $ref->stringcall();
         break;
     default:
         echo ("enter the value 1/2/3");

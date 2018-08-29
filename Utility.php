@@ -27,6 +27,24 @@ class Utility
         }
     }
 
+    #quadratic equation
+
+    public function quadraticequation()
+    {
+        echo ("enter the value of a : ");
+        $a = $this->getint();
+        echo ("enter the value of b : ");
+        $b = $this->getint();
+        echo ("enter the value of c : ");
+        $c = $this->getint();
+        $delta = pow($b, 2) - 4 * $a * $c;
+        $root1 = (-$b + sqrt($delta)) / (2 * $a);
+        $root2 = (-$b - sqrt($delta)) / (2 * $a);
+        echo "delta = " . $delta . "\n";
+        echo "root1 = " . $root1 . "\n";
+        echo "root2 = " . $root2 . "\n";
+    }
+
     #power check
 
     public function powerdigitcheck($num)
@@ -119,79 +137,117 @@ class Utility
     }
 
     #2dArray
-    function intcheck()
+    public function intcheck() #int no check
+
     {
-        if (!filter_var($num, FILTER_VALIDATE_INT) === false) {
-            echo("Integer is valid");
+        fscanf(STDIN, '%f', $int);
+        if (filter_var($int, FILTER_VALIDATE_INT)) {
+            return $int;
         } else {
-            echo("Integer is not valid");
+            echo "enter the int value fool  \n";
+            $this->intcall();
         }
     }
     public function intcall()
     {
-        $ref=new Utility();
-         echo ("enter the row value : ");
-         $r=$this->intcheck();
-         echo ("enter the col value : ");
-         $c=$this->intcheck();
-        $items = array(array());
-        echo "int called \n";
-        echo ("enter the value : ");
-            for ($i = 0; $i < $r; $i++) {
-                for ($j = 0; $j < $c; $j++) {
-                    $items[$i][$j] = $ref->getint();
-                }
-            }
-        print_r($items);
-    }
-// double
-    function doublecheck()
-    {
-        echo "Enter the inputdo : ";
+        echo ("enter the row value : ");
+        $r = $this->intcheck();
+        echo ("enter the column value : ");
+        $c = $this->intcheck();
 
-        fscanf(STDIN, '%f', $num);
-        $d=$num;
-        if (is_double($d)) {
-            return $num;
-        } else {
-            return $this->doublecheck();
-        }
-    }
-
-    public function doublecall()
-    {
-        $ref=new Utility();
         $items = array(array());
-        echo "double called\n";
-        $r = readline("enter the row value : ");
-        $c = readline("enter the col value : ");
-        $items = array(array());
-        echo "double called\n";
+        echo "enter the value : \n";
         for ($i = 0; $i < $r; $i++) {
             for ($j = 0; $j < $c; $j++) {
-                $items[$i][$j] = $ref->doublecheck();
+                $items[$i][$j] = $this->intcheck();
+            }
+        }
+        print_r($items);
+    }
+
+// double
+    public function doublecheck() #double no check
+
+    {
+        fscanf(STDIN, '%f', $int);
+        if (filter_var($int, FILTER_VALIDATE_INT)) {
+            return $int;
+        } else {
+            echo "enter the int value \n";
+            $this->doublecall();
+        }
+    }
+    public function doublenum() #double val check
+
+    {
+        fscanf(STDIN, '%f', $int);
+        if (filter_var($int, FILTER_VALIDATE_FLOAT)) {
+            return $int;
+        } else {
+            echo "enter the double value fool  \n";
+            $this->doublecall();
+        }
+    }
+    public function doublecall()
+    {
+        echo ("enter the row value : ");
+        $r = $this->doublecheck();
+        echo ("enter the column value : ");
+        $c = $this->doublecheck();
+
+        $items = array(array());
+        echo "enter the value : \n";
+        for ($i = 0; $i < $r; $i++) {
+            for ($j = 0; $j < $c; $j++) {
+                $items[$i][$j] = $this->doublenum();
             }
         }
         print_r($items);
     }
 // boolean
-
-    public function boolcall()
+    public function strcheck()
     {
+        fscanf(STDIN, '%d', $val);
+        if (filter_var($val, FILTER_VALIDATE_INT)) {
+            return $val;
+        } else {
+            echo "enter the int value fool  \n";
+            $this->intcall();
+        }
+    }
+    #string value
+    public function strvalue()
+    {
+        fscanf(STDIN, '%s', $str);
+
+        if (filter_var($str, FILTER_VALIDATE_INT) || filter_var($str, FILTER_VALIDATE_FLOAT)) {
+            echo "wrong value \n";
+            $this->stringcall();
+        }
+
+        if (filter_var($str, FILTER_SANITIZE_STRING)) {
+            return $str;
+        } else {
+            echo "entered wrong value : ";
+        }
+    }
+    public function stringcall() #boolean check
+
+    {
+        echo ("enter the row value : ");
+        $r = $this->strcheck();
+        echo ("enter the column value : ");
+        $c = $this->strcheck();
+
         $items = array(array());
-        echo "boolean called\n";
-        $r = readline("enter the row value : ");
-        $c = readline("enter the col value : ");
-        $items = array(array());
-        echo "boolean called\n";
+        echo "enter the value string : \n";
         for ($i = 0; $i < $r; $i++) {
             for ($j = 0; $j < $c; $j++) {
-                $items[$i][$j] = readline("enter the element : ");
+                $items[$i][$j] = $this->strvalue();
             }
         }
         print_r($items);
     }
-
 #coupon program
     public function coupon($n, $a1)
     {
@@ -203,8 +259,8 @@ class Utility
             } else {
                 $j = $i;
                 for ($k = 0; $k < $j; $k++) {
-                    if ($a1[$k] == $r) {#check element is equal or not 
-                        $i--;
+                    if ($a1[$k] == $r) { #check element is equal or not
+                    $i--;
                         break;
                     }
                 }
@@ -274,14 +330,15 @@ class Utility
             }
         }
     }
+    #swapping letters
     public function swap($a, $i, $j)
     {
         $temp;
-        $charArray = str_split($a);
-        $temp = $charArray[$i];
-        $charArray[$i] = $charArray[$j];
-        $charArray[$j] = $temp;
-        return implode($charArray);
+        $arr = str_split($a);
+        $temp = $arr[$i];
+        $arr[$i] = $arr[$j];
+        $arr[$j] = $temp;
+        return implode($arr);
     }
 
 #timer
@@ -289,8 +346,8 @@ class Utility
     public function timer()
     {
         echo ("enter 1 to start : ");
-        $input =$this->getint(); 
-        
+        $input = $this->getint();
+
         if ($input == 1 && filter_var($input, FILTER_VALIDATE_INT)) {
             echo "timer started \n";
             $start = microtime();

@@ -1,5 +1,5 @@
 <?php
-$s=microtime();
+//$s=microtime();
 
 include "Utility.php";
 
@@ -8,7 +8,7 @@ $length = strlen($str);
 $ref=new Utility();
 $ref->permute($str, 0, $length - 1);
 
-$t=microtime();
+//$t=microtime();
 
-echo "\n elapsed " . abs($t-$s);
+//echo "\n elapsed " . abs($t-$s);
 ?>       
